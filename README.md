@@ -1,2 +1,3 @@
-# CRUD em JavaScript
-<a href="https://davidcd1.github.io/crud-em-javascript/" target="_blank">Clique para visualizar</a>
+# Simple Social 
+## Um CRUD usando apenas HTML, CSS e JavaScript
+<a href="https://davidcd1.github.io/SimpleSocial/" target="_blank">Clique para visualizar</a>
