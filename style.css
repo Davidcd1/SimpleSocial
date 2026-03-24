@@ -1,117 +1,163 @@
+/* ==========================================================================
+   VARIÁVEIS DE CORES (PALETA DO PORTFÓLIO)
+   ========================================================================== */
 :root {
-    --color-primary: #4267B2; /* Azul do Facebook */
-    --color-secondary: #FFFFFF; /* Branco */
-    --color-background: #f0f2f5; /* Cinza claro */
-    --color-text: #333;
+    /* Light Mode (Default) */
+    --bg-page: #f8f9fa;
+    --bg-card: #ffffff;
+    --text-main: #212529;
+    --text-muted: #6c757d;
+    --accent: #f4702a; /* Laranja Rust do seu portfólio */
+    --border: #dee2e6;
+    --shadow: 0 4px 12px rgba(0,0,0,0.05);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+body.dark-mode {
+    /* Dark Mode (Inspirado no Gemini/Portfólio) */
+    --bg-page: #05070a;
+    --bg-card: #111418;
+    --text-main: #e9ecef;
+    --text-muted: #adb5bd;
+    --accent: #f4702a; 
+    --border: #2d343c;
+    --shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+/* ==========================================================================
+   ESTILOS GERAIS
+   ========================================================================== */
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: var(--color-background);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-page);
+    color: var(--text-main);
     margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    transition: var(--transition);
     min-height: 100vh;
 }
 
 header {
-    background-color: var(--color-primary);
-    color: var(--color-secondary);
-    padding: 15px 20px;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 main {
-    width: 90%;
     max-width: 800px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    padding: 30px;
-    color: var(--color-text);
+    margin: 2rem auto;
+    padding: 0 1rem;
 }
 
-form {
-    width: 100%;
+/* ==========================================================================
+   CARDS E POSTS (GLASSMORPHISM LIGHT)
+   ========================================================================== */
+.postsList li, #zero, .login {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow);
+    list-style: none;
 }
 
-input[type="text"],
-input[type="password"],
-input[type="email"],
-textarea {
-    width: 100%;
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.5rem;
+}
+
+.post-content {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+/* ==========================================================================
+   INPUTS E BOTÕES
+   ========================================================================== */
+input, textarea {
+    background: var(--bg-page);
+    border: 1px solid var(--border);
+    color: var(--text-main);
     padding: 12px;
-    margin: 10px 0;
-    border: 1px solid #ddd; /* Cinza claro */
-    border-radius: 5px;
-    font-size: 16px;
-    color: var(--color-text);
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    outline: none;
 }
+
+input:focus { border-color: var(--accent); }
 
 button {
-    width: 100%;
-    padding: 12px;
-    margin-top: 10px;
-    background-color: var(--color-primary);
-    color: var(--color-secondary);
+    background: var(--accent);
+    color: white;
     border: none;
-    border-radius: 5px;
-    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: var(--transition);
 }
 
 button:hover {
-    background-color: #365899; /* Azul escuro mais escuro */
+    filter: brightness(1.1);
+    transform: translateY(-2px);
 }
 
-.postsList li {
-    background-color: #fff;
-    border-radius: 5px;
-    padding: 20px;
-    margin: 20px 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+.btn-theme {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-main);
+    font-size: 1.2rem;
 }
 
-.postsList li .datapost strong {
-    font-weight: bold;
+/* ==========================================================================
+   CHAT GLOBAL (MODAL TECH)
+   ========================================================================== */
+.chat-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 320px;
+    height: 450px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    overflow: hidden;
 }
 
-.postsList li .datapost p {
-    margin-top: 10px;
-    font-size: 16px;
+#chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
 }
 
-.postsList li .listbuttonv button {
-    background-color: var(--color-primary);
-    color: var(--color-secondary);
-    border: none;
-    border-radius: 5px;
-    padding: 10px 15px;
-    margin-right: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+.chat-msg {
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    border-radius: 12px;
+    background: var(--bg-page);
+    max-width: 85%;
 }
 
-.postsList li .listbuttonv button:hover {
-    background-color: #365899; /* Azul escuro mais escuro */
+.chat-msg.me {
+    background: var(--accent);
+    color: white;
+    align-self: flex-end;
+    margin-left: auto;
 }
 
-#perfil img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 2px solid #fff;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
-
-.hide {
-    display: none;
-}
-
-.show {
-    display: block;
-}
+.hide { display: none; }

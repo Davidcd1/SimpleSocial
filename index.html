@@ -1,71 +1,76 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=7">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
-        <title>CRUD</title>
-    </head>
-    <body>
-        <header>
-            <nav>
-                <div>
-                    <h1 id="title">CRUD</h1>
-                </div>
-            </nav>
-            <div class="conf">
-                <img src="images/gear.ico" alt="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>SimpleSocial - Rede Social</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <h1 id="title">SimpleSocial</h1>
+        </nav>
+        <div class="conf">
+            <button id="theme-toggle" class="btn-theme">🌓</button>
+            <button id="btn-chat-toggle" class="btn-main">Chat Global</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="login show">
+            <form name="login" id="clogin" class="show">
+                <label>Entrar</label>
+                <input name="username" type="text" placeholder="Nome">
+                <input name="password" type="password" placeholder="Senha">
+                <button type="submit">Login</button>
+                <a href="javascript:void(0)" onclick="clickregister()" class="btn-register">Registrar-se</a>
+            </form>
+
+            <form name="register" id="cregister" class="hide">
+                <label>Registrar</label>
+                <input type="email" name="emailR" placeholder="Email">
+                <input type="text" name="nameR" placeholder="Nome">
+                <input type="password" name="passwordR" placeholder="Senha">
+                <button type="submit">Registrar</button>
+            </form>
+        </section>
+
+        <section class="posts hide">
+            <div id="user">
+                <section id="perfil">
+                    <img id="photo-post" src="images/perfil.jpeg" alt="">
+                    <p id="namep">None</p>
+                </section>
             </div>
-        </header>
-        <main>
-            <section class="conf hide">
-                <ul>
-                    <li>Mudar Foto</li>
-                    <li>Meus Posts</li>
-                    <li></li>
-                    <li>Sair</li>
-                </ul>
-            </section>
-            <section class="login show">
-                <form name="login" id="clogin" class="show">
-                    <label>Entrar</label>
-                    <input name="username" type="text" placeholder="Nome">
-                    <input name="password" type="password"  id="password" placeholder="Senha">
-                    
-                    <button name="submit">Login</button>
-                    <a href="#register" onclick="clickregister()" class="btn-register">Registrar-se</a>
-                </form>
-                <form name="register" id="cregister" class="hide">
-                    <label>Registrar</label>
-                    <input type="email" name="emailR" id="emailR" placeholder="Email">
-                    <input type="text" name="nameR" id="nameR" placeholder="Nome">
-                    <input type="password" name="passwordR" id="passwordR" placeholder="Senha">
-                    <button name="submit">Registrar</button>
-                </form>
-            </section>
-            <section class="posts hide">
-                <div id="user">
-                    <section id="perfil">
-                        <img id="photo-post" src="images/perfil.jpeg" alt="">
-                        <p id="namep">None<p>
-                    </section>
-                </div>
-                <div id="posts">
-                    <section id="zero">
-                        <form name="cpost" id="cpost">
-                            <textarea name="fieldPost" type="text" placeholder="Digite o seu post"></textarea>
-                            <button name="submit">Postar</button>
-                        </form>
-                    </section>
-                    <section id="one">
-                        <ul class="postsList">
-                        </ul>
-                    </section>
-                </div>
-            </section>
-        </main>
-        <script src="crud.js"></script>
-        <script src="func.js"></script>
-    </body>
+
+            <div id="feed">
+                <section id="zero">
+                    <form name="cpost" id="cpost">
+                        <textarea name="fieldPost" placeholder="O que está pensando?"></textarea>
+                        <button type="submit">Postar</button>
+                    </form>
+                </section>
+                
+                <section id="one">
+                    <ul class="postsList"></ul>
+                </section>
+            </div>
+        </section>
+
+        <section id="chat-global" class="chat-container hide">
+            <div class="chat-header">
+                <h3>Chat em Tempo Real</h3>
+                <button onclick="toggleChat()">X</button>
+            </div>
+            <div id="chat-messages"></div>
+            <div class="chat-input">
+                <input type="text" id="chat-field" placeholder="Digite uma mensagem...">
+                <button onclick="app.sendChatMessage()">Enviar</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
 </html>
